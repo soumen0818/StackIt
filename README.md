@@ -16,6 +16,24 @@ Get required answers, conceptual clarity using a modern, responsive web interfac
 
 ---
 
+## Table of Contents
+
+- [StackIt – A Minimal Q&A Forum Platform](#stackit--a-minimal-qa-forum-platform)
+- [StackIt Screenshots](#stackit-screenshots)
+- [Quick Start](#quick-start)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Project Structure](#project-structure)
+- [✨ Features](#-features)
+  - [🧾 Ask a Question](#-ask-a-question)
+  - [💬 Answering Questions](#-answering-questions)
+  - [📥 Voting & Accepted Answers](#-voting--accepted-answers)
+  - [🏷️ Tagging System](#-tagging-system)
+  - [🔔 Notification System](#-notification-system)
+  - [👤 User Authentication](#-user-authentication)
+  - [🧭 Filtering & Search](#-filtering--search)
+  - [🎨 Responsive UI](#-responsive-ui)
+
 ## StackIt Screenshots
 
 | Home Page | Ask a Question | All Questions |
