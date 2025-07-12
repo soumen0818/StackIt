@@ -18,7 +18,10 @@ Get required answers, conceptual clarity using a modern, responsive web interfac
 
 ## StackIt Screenshots
 
-| Home Page | 
+| Home Page | Ask a Question | All Questions |
+|-----------|----------------|----------------|
+| ![Home](https://github.com/user-attachments/assets/fab7e670-8652-43e1-83bc-d6da91fbf85b) | ![Ask](https://github.com/user-attachments/assets/f1bdf665-e226-4555-888c-72d65aae1280) | ![List](https://github.com/user-attachments/assets/c99d3ebb-37ce-476f-87bf-6fdcd693f351) |
+
 
 
 ```mermaid
