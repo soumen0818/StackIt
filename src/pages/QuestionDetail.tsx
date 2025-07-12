@@ -101,7 +101,7 @@ const QuestionDetail = () => {
                   <Button
                     variant="ghost"
                     size="sm"
-                    onClick={() => handleVote('up')}
+                    onClick={() => handleVote(question.id, 'up')}
                     className={`p-2 ${userVote === 'up' ? 'text-green-400' : 'text-slate-400 hover:text-green-400'}`}
                   >
                     <TrendingUp className="h-6 w-6" />
@@ -110,7 +110,7 @@ const QuestionDetail = () => {
                   <Button
                     variant="ghost"
                     size="sm"
-                    onClick={() => handleVote('down')}
+                    onClick={() => handleVote(question.id, 'down')}
                     className={`p-2 ${userVote === 'down' ? 'text-red-400' : 'text-slate-400 hover:text-red-400'}`}
                   >
                     <TrendingDown className="h-6 w-6" />
@@ -178,11 +178,21 @@ const QuestionDetail = () => {
                   <div className="flex gap-6">
                     {/* Voting */}
                     <div className="flex flex-col items-center space-y-2 min-w-[60px]">
-                      <Button variant="ghost" size="sm" className="p-2 text-slate-400 hover:text-green-400">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="p-2 text-slate-400 hover:text-green-400"
+                        onClick={() => handleVote(answer.id, 'up')}
+                      >
                         <TrendingUp className="h-6 w-6" />
                       </Button>
                       <span className="text-xl font-bold text-white">{answer.votes}</span>
-                      <Button variant="ghost" size="sm" className="p-2 text-slate-400 hover:text-red-400">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="p-2 text-slate-400 hover:text-red-400"
+                        onClick={() => handleVote(answer.id, 'down')}
+                      >
                         <TrendingDown className="h-6 w-6" />
                       </Button>
                       {answer.isAccepted && (
