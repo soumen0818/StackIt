@@ -88,6 +88,7 @@ G --> H[Saves Answer to MongoDB]
 H --> I[Sends Notification to Question Owner]
 
 I --> J[Owner Accepts or Votes]
+```
 
 ## StackIt Screenshots
 
