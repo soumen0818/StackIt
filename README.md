@@ -76,26 +76,6 @@ Get required answers, conceptual clarity using a modern, responsive web interfac
 |-----------|----------------|----------------|
 | ![Home](https://github.com/user-attachments/assets/fab7e670-8652-43e1-83bc-d6da91fbf85b) | ![Ask](https://github.com/user-attachments/assets/f1bdf665-e226-4555-888c-72d65aae1280) | ![List](https://github.com/user-attachments/assets/c99d3ebb-37ce-476f-87bf-6fdcd693f351) |
 
-```mermaid
-graph TD
-A[User Logs In] --> B[Asks a Question]
-B --> C[Uses Rich Text Editor to format question]
-C --> D[Saves Question to MongoDB]
-D --> E[Displays in Questions List]
-
-F[Other User Answers] --> G[Uses Editor to format]
-G --> H[Saves Answer to MongoDB]
-H --> I[Sends Notification to Question Owner]
-
-I --> J[Owner Accepts or Votes]
-```
-
-## StackIt Screenshots
-
-| Home Page | Ask a Question | All Questions |
-|-----------|----------------|----------------|
-| ![Home](https://github.com/user-attachments/assets/fab7e670-8652-43e1-83bc-d6da91fbf85b) | ![Ask](https://github.com/user-attachments/assets/f1bdf665-e226-4555-888c-72d65aae1280) | ![List](https://github.com/user-attachments/assets/c99d3ebb-37ce-476f-87bf-6fdcd693f351) |
-
 
 
 ```mermaid
@@ -167,7 +147,6 @@ I --> J[Owner Accepts or Votes]
    - Frontend: `http://localhost:5173`
    - Backend API: `http://localhost:5000`
 
-## Project Structure
 
 ## Project Structure
 
