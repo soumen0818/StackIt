@@ -41,7 +41,7 @@ const AskQuestion = () => {
   const fetchSuggestedTags = async () => {
     try {
       const response = await axios.get('/api/tags');
-      setSuggestedTags(response.data);
+      setSuggestedTags(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
       console.error(error);
     }
@@ -50,6 +50,8 @@ const AskQuestion = () => {
   useEffect(() => {
     fetchSuggestedTags();
   }, []);
+
+  const filteredTags = Array.isArray(suggestedTags) ? suggestedTags.filter(tag => tag.includes(currentTag)) : [];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950">
@@ -157,7 +159,7 @@ const AskQuestion = () => {
                     <div>
                       <p className="text-sm text-slate-400 mb-2">Suggested tags:</p>
                       <div className="flex flex-wrap gap-2">
-                        {suggestedTags.filter(tag => !tags.includes(tag)).slice(0, 6).map((tag) => (
+                        {filteredTags.filter(tag => !tags.includes(tag)).slice(0, 6).map((tag) => (
                           <Button
                             key={tag}
                             type="button"
