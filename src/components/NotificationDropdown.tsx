@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { Bell, MessageSquare, TrendingUp, User, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -7,7 +8,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import axios from 'axios';
 
 interface Notification {
   id: number;
@@ -28,7 +28,7 @@ export const NotificationDropdown = () => {
   const fetchNotifications = async () => {
     try {
       const response = await axios.get('/api/notifications', { params: { userId: currentUserId } });
-      setNotifications(response.data);
+      setNotifications(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
       console.error(error);
     }
