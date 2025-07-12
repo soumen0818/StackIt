@@ -4,10 +4,13 @@
 
 # Team Members & Email Ids :
 SOUMEN DAS & sdas721444@gmail.com
+---
 SOUVIK MANDAL & souvikmandals10@gmail.com
+---
 SNIGDHA MANDAL & mandalsnigdha21@gmail.com
+---
 SANGITA ROY & sangitaroy.dgp2005@gmail.com
-
+---
 
 
 **StackIt is a minimal question-and-answer platform that supports collaborative 
