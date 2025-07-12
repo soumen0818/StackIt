@@ -135,6 +135,59 @@ StackIt/
 - **package.json**: Frontend dependencies and scripts.
 - **tailwind.config.js**: Tailwind CSS configuration.
 
+## ✨ Features
+
+### 🧾 Ask a Question
+- Submit a new question with:
+  - **Title** (e.g., *"How to implement JWT authentication in React?"*)
+  - **Rich-text description**
+  - **Relevant tags** (multi-select like React, JWT, Authentication)
+- Markdown-style **rich text editor** with support for:
+  - Bold, Italic, Strikethrough
+  - Bullet & Numbered Lists
+  - Emoji Insertion 😊
+  - Image Upload
+  - Hyperlink Insertion 🔗
+  - Text Alignment (Left, Center, Right)
+
+### 💬 Answering Questions
+- Users can post answers with the same rich text editor
+- Markdown and media formatting supported
+- Answer count displayed per question
+- Only **authenticated users** can answer
+
+### 📥 Voting & Accepted Answers
+- Users can **upvote/downvote** any answer
+- Question owner can **mark one answer as accepted**
+- Answer metadata: votes, comments, views
+
+### 🏷️ Tagging System
+- Questions must include **at least one tag**
+- Tags help filter and organize content
+- Tag-based question filtering supported
+
+### 🔔 Notification System
+- 🔕 Notification icon (bell) on top nav bar
+- Real-time notifications for:
+  - New answers to your question
+  - Comments on your answers
+  - Mentions using `@username`
+- Shows unread notification count
+- Dropdown list with recent alerts
+
+### 👤 User Authentication
+- JWT-based secure login system
+- Signup/Login via custom form
+- User sessions managed on frontend
+
+### 🧭 Filtering & Search
+- Search questions by **title** or **tags**
+- Sort by **Newest**, **Most Voted**, or **Most Viewed**
+
+### 🎨 Responsive UI
+- Fully responsive and mobile-friendly design
+- Built with **TailwindCSS** / **Bootstrap** (customizable)
+
 
 
 
