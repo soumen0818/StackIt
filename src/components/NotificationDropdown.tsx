@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Bell, MessageSquare, TrendingUp, User, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -7,6 +7,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import axios from 'axios';
 
 interface Notification {
   id: number;
@@ -20,51 +21,39 @@ interface Notification {
 }
 
 export const NotificationDropdown = () => {
-  const [notifications, setNotifications] = useState<Notification[]>([
-    {
-      id: 1,
-      type: 'answer',
-      title: 'New answer to your question',
-      message: 'Someone answered "How to implement JWT authentication in React?"',
-      time: '2 minutes ago',
-      isRead: false,
-      questionId: 1
-    },
-    {
-      id: 2,
-      type: 'vote',
-      title: 'Your answer was upvoted',
-      message: 'Your answer about TypeScript error handling received an upvote',
-      time: '1 hour ago',
-      isRead: false,
-      answerId: 5
-    },
-    {
-      id: 3,
-      type: 'mention',
-      title: 'You were mentioned',
-      message: '@john_dev mentioned you in a comment',
-      time: '3 hours ago',
-      isRead: true,
-      questionId: 3
-    },
-    {
-      id: 4,
-      type: 'comment',
-      title: 'New comment',
-      message: 'Someone commented on your answer about React hooks',
-      time: '1 day ago',
-      isRead: true,
-      answerId: 2
+  const [notifications, setNotifications] = useState<Notification[]>([]);
+
+  const currentUserId = 1; // Replace with actual current user ID
+
+  const fetchNotifications = async () => {
+    try {
+      const response = await axios.get('/api/notifications', { params: { userId: currentUserId } });
+      setNotifications(response.data);
+    } catch (error) {
+      console.error(error);
     }
-  ]);
+  };
+
+  const markNotificationAsRead = async (notificationId: number) => {
+    try {
+      const response = await axios.post('/api/notifications/read', { notificationId });
+      console.log(response.data);
+      fetchNotifications();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchNotifications();
+  }, []);
 
   const unreadCount = notifications.filter(n => !n.isRead).length;
 
   const markAsRead = (id: number) => {
-    setNotifications(prev => 
-      prev.map(notification => 
-        notification.id === id 
+    setNotifications(prev =>
+      prev.map(notification =>
+        notification.id === id
           ? { ...notification, isRead: true }
           : notification
       )
@@ -72,7 +61,7 @@ export const NotificationDropdown = () => {
   };
 
   const markAllAsRead = () => {
-    setNotifications(prev => 
+    setNotifications(prev =>
       prev.map(notification => ({ ...notification, isRead: true }))
     );
   };
@@ -108,15 +97,15 @@ export const NotificationDropdown = () => {
           )}
         </Button>
       </PopoverTrigger>
-      
+
       <PopoverContent className="w-80 bg-slate-800/95 border-slate-700 backdrop-blur-sm p-0" align="end">
         <div className="p-4 border-b border-slate-700">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold text-white">Notifications</h3>
             {unreadCount > 0 && (
-              <Button 
-                variant="ghost" 
-                size="sm" 
+              <Button
+                variant="ghost"
+                size="sm"
                 onClick={markAllAsRead}
                 className="text-blue-400 hover:text-blue-300 text-sm"
               >
@@ -125,7 +114,7 @@ export const NotificationDropdown = () => {
             )}
           </div>
         </div>
-        
+
         <div className="max-h-96 overflow-y-auto">
           {notifications.length === 0 ? (
             <div className="p-6 text-center text-slate-400">
@@ -137,16 +126,15 @@ export const NotificationDropdown = () => {
               {notifications.map((notification) => (
                 <div
                   key={notification.id}
-                  className={`p-4 border-b border-slate-700/50 hover:bg-slate-700/30 transition-colors ${
-                    !notification.isRead ? 'bg-slate-700/20' : ''
-                  }`}
+                  className={`p-4 border-b border-slate-700/50 hover:bg-slate-700/30 transition-colors ${!notification.isRead ? 'bg-slate-700/20' : ''
+                    }`}
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex items-start space-x-3 flex-1">
                       <div className="mt-1">
                         {getNotificationIcon(notification.type)}
                       </div>
-                      
+
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center space-x-2">
                           <p className="text-sm font-medium text-white truncate">
@@ -164,7 +152,7 @@ export const NotificationDropdown = () => {
                         </p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center space-x-1 ml-2">
                       {!notification.isRead && (
                         <Button
@@ -191,7 +179,7 @@ export const NotificationDropdown = () => {
             </div>
           )}
         </div>
-        
+
         {notifications.length > 0 && (
           <div className="p-4 border-t border-slate-700">
             <Button variant="ghost" className="w-full text-blue-400 hover:text-blue-300">

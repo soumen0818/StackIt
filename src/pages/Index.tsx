@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Search, MessageSquare, Users, TrendingUp, ChevronRight, User, Plus } from "lucide-react";
@@ -73,22 +72,24 @@ const Index = () => {
                 <Link to="/users" className="text-slate-300 hover:text-white transition-colors">Users</Link>
               </nav>
             </div>
-            
+
             <div className="flex items-center space-x-4">
               <div className="relative hidden md:block">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 h-4 w-4" />
-                <Input 
-                  placeholder="Search questions..." 
+                <Input
+                  placeholder="Search questions..."
                   className="pl-10 w-64 bg-slate-800/50 border-slate-600 focus:border-blue-500"
                 />
               </div>
-              
+
               {isLoggedIn ? (
                 <div className="flex items-center space-x-3">
                   <NotificationDropdown />
-                  <Button variant="ghost" size="sm">
-                    <User className="h-4 w-4" />
-                  </Button>
+                  <Link to="/user">
+                    <Button variant="ghost" size="sm">
+                      <User className="h-4 w-4" />
+                    </Button>
+                  </Link>
                 </div>
               ) : (
                 <div className="flex space-x-2">
@@ -166,7 +167,7 @@ const Index = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Latest Questions</h2>
             <p className="text-slate-400">Discover what the community is discussing right now</p>
           </div>
-          
+
           <div className="grid gap-6 max-w-4xl mx-auto">
             {featuredQuestions.map((question) => (
               <div key={question.id} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-lg p-6 hover:bg-slate-800/70 transition-all hover:scale-[1.02] hover:shadow-xl">
@@ -187,9 +188,9 @@ const Index = () => {
                     </span>
                   </div>
                 </div>
-                
+
                 <p className="text-slate-300 mb-4 line-clamp-2">{question.description}</p>
-                
+
                 <div className="flex items-center justify-between">
                   <div className="flex flex-wrap gap-2">
                     {question.tags.map((tag) => (
@@ -205,7 +206,7 @@ const Index = () => {
               </div>
             ))}
           </div>
-          
+
           <div className="text-center mt-8">
             <Link to="/questions">
               <Button variant="outline" className="border-slate-600 text-white hover:bg-slate-800">
@@ -224,7 +225,7 @@ const Index = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Popular Tags</h2>
             <p className="text-slate-400">Explore topics that matter to developers</p>
           </div>
-          
+
           <div className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
             {popularTags.map((tag) => (
               <div key={tag.name} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-lg p-4 hover:bg-slate-800/70 transition-all hover:scale-105 cursor-pointer group">

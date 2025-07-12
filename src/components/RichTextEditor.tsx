@@ -3,6 +3,7 @@ import StarterKit from '@tiptap/starter-kit';
 import Image from '@tiptap/extension-image';
 import Link from '@tiptap/extension-link';
 import TextAlign from '@tiptap/extension-text-align';
+import EmojiPicker from '@tiptap/extension-emoji';
 import { Bold, Italic, Strikethrough, List, ListOrdered, Link as LinkIcon, Image as ImageIcon, AlignLeft, AlignCenter, AlignRight, Smile } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -35,6 +36,7 @@ export const RichTextEditor = ({ content, onChange, placeholder }: RichTextEdito
       TextAlign.configure({
         types: ['heading', 'paragraph'],
       }),
+      EmojiPicker,
     ],
     content,
     onUpdate: ({ editor }) => {
@@ -90,7 +92,7 @@ export const RichTextEditor = ({ content, onChange, placeholder }: RichTextEdito
         >
           <Bold className="h-4 w-4" />
         </Button>
-        
+
         <Button
           type="button"
           variant="ghost"
@@ -100,7 +102,7 @@ export const RichTextEditor = ({ content, onChange, placeholder }: RichTextEdito
         >
           <Italic className="h-4 w-4" />
         </Button>
-        
+
         <Button
           type="button"
           variant="ghost"
@@ -110,9 +112,9 @@ export const RichTextEditor = ({ content, onChange, placeholder }: RichTextEdito
         >
           <Strikethrough className="h-4 w-4" />
         </Button>
-        
+
         <div className="w-px h-6 bg-slate-600 mx-1" />
-        
+
         <Button
           type="button"
           variant="ghost"
@@ -122,7 +124,7 @@ export const RichTextEditor = ({ content, onChange, placeholder }: RichTextEdito
         >
           <List className="h-4 w-4" />
         </Button>
-        
+
         <Button
           type="button"
           variant="ghost"
@@ -132,9 +134,9 @@ export const RichTextEditor = ({ content, onChange, placeholder }: RichTextEdito
         >
           <ListOrdered className="h-4 w-4" />
         </Button>
-        
+
         <div className="w-px h-6 bg-slate-600 mx-1" />
-        
+
         <Button
           type="button"
           variant="ghost"
@@ -144,7 +146,7 @@ export const RichTextEditor = ({ content, onChange, placeholder }: RichTextEdito
         >
           <AlignLeft className="h-4 w-4" />
         </Button>
-        
+
         <Button
           type="button"
           variant="ghost"
@@ -154,7 +156,7 @@ export const RichTextEditor = ({ content, onChange, placeholder }: RichTextEdito
         >
           <AlignCenter className="h-4 w-4" />
         </Button>
-        
+
         <Button
           type="button"
           variant="ghost"
@@ -164,9 +166,9 @@ export const RichTextEditor = ({ content, onChange, placeholder }: RichTextEdito
         >
           <AlignRight className="h-4 w-4" />
         </Button>
-        
+
         <div className="w-px h-6 bg-slate-600 mx-1" />
-        
+
         <Button
           type="button"
           variant="ghost"
@@ -176,7 +178,7 @@ export const RichTextEditor = ({ content, onChange, placeholder }: RichTextEdito
         >
           <LinkIcon className="h-4 w-4" />
         </Button>
-        
+
         <Button
           type="button"
           variant="ghost"
@@ -186,7 +188,7 @@ export const RichTextEditor = ({ content, onChange, placeholder }: RichTextEdito
         >
           <ImageIcon className="h-4 w-4" />
         </Button>
-        
+
         <Button
           type="button"
           variant="ghost"

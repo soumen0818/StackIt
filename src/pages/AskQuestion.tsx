@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, Plus, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { RichTextEditor } from "@/components/RichTextEditor";
+import axios from 'axios';
 
 const AskQuestion = () => {
   const navigate = useNavigate();
@@ -14,6 +14,7 @@ const AskQuestion = () => {
   const [description, setDescription] = useState("");
   const [tags, setTags] = useState<string[]>([]);
   const [currentTag, setCurrentTag] = useState("");
+  const [suggestedTags, setSuggestedTags] = useState<string[]>([]);
 
   const handleAddTag = () => {
     if (currentTag.trim() && !tags.includes(currentTag.trim()) && tags.length < 5) {
@@ -26,14 +27,29 @@ const AskQuestion = () => {
     setTags(tags.filter(tag => tag !== tagToRemove));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically submit to your backend
-    console.log({ title, description, tags });
-    navigate("/questions");
+    try {
+      const response = await axios.post('/api/questions', { title, description, tags });
+      console.log(response.data);
+      navigate('/questions');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const suggestedTags = ["React", "JavaScript", "TypeScript", "Node.js", "CSS", "HTML", "Python", "API"];
+  const fetchSuggestedTags = async () => {
+    try {
+      const response = await axios.get('/api/tags');
+      setSuggestedTags(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchSuggestedTags();
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950">

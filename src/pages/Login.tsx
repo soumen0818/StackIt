@@ -23,7 +23,7 @@ const Login = () => {
       localStorage.setItem('isLoggedIn', 'true');
       localStorage.setItem('user', JSON.stringify({ email: formData.email, name: 'John Doe' }));
       toast({ title: "Success", description: "Logged in successfully!" });
-      navigate("/");
+      navigate("/dashboard"); // Ensure this redirects to a valid page
     }
   };
 
@@ -44,7 +44,7 @@ const Login = () => {
           <CardTitle className="text-2xl text-white">Welcome back</CardTitle>
           <p className="text-slate-400">Sign in to your account</p>
         </CardHeader>
-        
+
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
@@ -60,7 +60,7 @@ const Login = () => {
                 required
               />
             </div>
-            
+
             <div className="space-y-2">
               <Label htmlFor="password" className="text-white">Password</Label>
               <div className="relative">
@@ -83,12 +83,12 @@ const Login = () => {
                 </button>
               </div>
             </div>
-            
+
             <Button type="submit" className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
               Sign In
             </Button>
           </form>
-          
+
           <div className="mt-6 text-center">
             <p className="text-slate-400">
               Don't have an account?{" "}
@@ -97,7 +97,7 @@ const Login = () => {
               </Link>
             </p>
           </div>
-          
+
           <div className="mt-4 text-center">
             <Link to="/forgot-password" className="text-sm text-slate-400 hover:text-white">
               Forgot your password?
